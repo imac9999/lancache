@@ -47,17 +47,17 @@ If you want to install it manually, please follow the instructions below:
 	0) Configure proper network interface in your /etc/network/interfaces file, go for static IP address, take notes about all IPs you'll assign, as you need to refer to them during this installation by A LOT!
 
     	1) Install the required utilities
-	   apt-get install curl git unbound build-essential libpcre3 zlib1g-dev libreadline-dev libncurses5-dev libssl-dev httpry libudns0 libudns-dev libev4 libev-dev devscripts automake libtool autoconf autotools-dev cdbs debhelper dh-autoreconf dpkg-dev gettext pkg-config fakeroot libpcre3-dev -y
+	   	apt-get install curl git unbound build-essential libpcre3 zlib1g-dev libreadline-dev libncurses5-dev libssl-dev httpry libudns0 libudns-dev libev4 libev-dev devscripts automake libtool autoconf autotools-dev cdbs debhelper dh-autoreconf dpkg-dev gettext pkg-config fakeroot libpcre3-dev -y
 
 	2) Clone the git repo
-	   git clone -b master http://github.com/imac9999/lancache
+	   	git clone -b master http://github.com/imac9999/lancache
 
 	3) Install nginx
-	   curl http://nginx.org/download/nginx-1.13.4.tar.gz | tar zx
-	   cd ngnix-1.13.4
-	   ./configure --with-http_ssl_module --with-http_slice_module --with-file-aio --with-threads
-	   make
-	   make install
+	   	curl http://nginx.org/download/nginx-1.13.4.tar.gz | tar zx
+	   	cd ngnix-1.13.4
+	   	./configure --with-http_ssl_module --with-http_slice_module --with-file-aio --with-threads
+	   	make
+	   	make install
 
 	4) Add the virtual interfaces (used for caching in nginx) to /etc/network/interfaces
 
@@ -107,12 +107,11 @@ If you want to install it manually, please follow the instructions below:
 	10) Put it in the standard Boot:
 		update-rc.d lancache defaults
 
-	11) Copy ~/lancache/limits.conf to /etc/security/
+	11) cp ~/lancache/limits.conf /etc/security/
 
    	12) Edit ~/lancache/hosts to your needs, placing all your virtual IP's next to the appropriate caching service
-		12.1) copy ~/lancache/hosts into your /etc dir
-			cp ~/lancache/hosts /etc/
-
+		12.1) cp ~/lancache/hosts /etc/
+			
 	13) Disable IPv6
 		echo "net.ipv6.conf.all.disable_ipv6=1" >/etc/sysctl.d/disable-ipv6.conf
         	sysctl -p /etc/sysctl.d/disable-ipv6.conf
