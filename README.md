@@ -74,7 +74,7 @@ If you want to install it manually, please follow the instructions below:
 	6.1) chown the folder:
 		chown -R lancache:lancache /srv/lancache
 
-	7) Copy the conf folder and contents (where you originally git cloned it to in step 4) to /usr/local/nginx/conf/
+	7) Copy the conf folder and contents (where you originally git cloned it to in step 2) to /usr/local/nginx/conf/
 		cp -R ~/lancache/conf /usr/local/nginx/
     		
 		7.1) Replace the proxy_bind variable with your primary IP address (not one of the virtual ones)
@@ -100,10 +100,10 @@ If you want to install it manually, please follow the instructions below:
 	14) Install sniproxy for passing through HTTPS traffic (cannot be cached)
 		14.1) git clone https://github.com/dlundquist/sniproxy
 		14.2) curl https://raw.githubusercontent.com/OpenSourceLAN/origin-docker/master/sniproxy/sniproxy.conf -o /etc/sniproxy.conf
-		19.3) cd sniproxy
-		19.4) ./autogen.sh && ./configure && make check && make install
+		14.3) cd sniproxy
+		14.4) ./autogen.sh && ./configure && make check && make install
 			# If there are problems during test procedures, you can try to skip the checks by leaving out "&&make check" 
-		19.5) Start sniproxy with /usr/local/sbin/sniproxy -c /etc/sniproxy.conf
+		14.5) Start sniproxy with /usr/local/sbin/sniproxy -c /etc/sniproxy.conf
 
 	15) Copy the unbound configuration from ~/lancache/unbound/unbound.conf to /etc/unbound/unbound.conf
 	15.1) Replace the interfaces: section with the normal ip (not the virtual ones)
