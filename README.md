@@ -53,7 +53,7 @@ https://github.com/bntjah/lc-installer (warning might contain bugs! So proceed o
 If you want to install it manually, please follow the instructions below:
 
     1) Install the required utilities
-	   sudo apt-get install devscripts curl git unbound build-essential libpcre3 libpcre3-dev zlib1g-dev libreadline-dev libev4 libev-dev libncurses5-dev git libssl-dev httpry
+	   apt-get install curl git unbound build-essential libpcre3 zlib1g-dev libreadline-dev libncurses5-dev libssl-dev httpry libudns0 libudns-dev libev4 libev-dev devscripts automake libtool autoconf autotools-dev cdbs debhelper dh-autoreconf dpkg-dev gettext pkg-config fakeroot libpcre3-dev -y
 
 	2) Clone the git repo
 	   git clone -b master http://github.com/bntjah/lancache
@@ -63,113 +63,10 @@ If you want to install it manually, please follow the instructions below:
 	   cd ngnix-1.13.4
 	   ./configure --with-http_ssl_module --with-http_slice_module --with-file-aio --with-threads
 	   make
-	   sudo make install
+	   make install
 
 	4) Add the virtual interfaces (used for caching in nginx) to /etc/network/interfaces
 
-```
-# Ip used for STEAM caching
-auto eth0:1
-iface eth0:1 inet static
-address 10.0.1.11
-netmask 255.255.0.0
-
-# Ip used for RIOT caching
-auto eth0:2
-iface eth0:2 inet static
-address 10.0.1.12
-netmask 255.255.0.0
-
-# Ip used for Blizzard caching
-auto eth0:3
-iface eth0:3 inet static
-address 10.0.1.13
-netmask 255.255.0.0
-
-# Ip used for Hirez caching
-auto eth0:4
-iface eth0:4 inet static
-address 10.0.1.14
-netmask 255.255.0.0
-
-# Ip used for Origin caching
-auto eth0:5
-iface eth0:5 inet static
-address 10.0.1.15
-netmask 255.255.0.0
-
-# Ip used for Sony caching
-auto eth0:6
-iface eth0:6 inet static
-address 10.0.1.16
-netmask 255.255.0.0
-
-# Ip used for Microsoft caching
-auto eth0:7
-iface eth0:7 inet static
-address 10.0.1.17
-netmask 255.255.0.0
-
-# Ip used for Tera caching
-auto eth0:8
-iface eth0:8 inet static
-address 10.0.1.18
-netmask 255.255.0.0
-
-# Ip used for GOG caching
-auto eth0:9
-iface eth0:9 inet static
-address 10.0.1.19
-netmask 255.255.0.0
-
-# Ip used for ArenaNetworks caching
-auto eth0:10
-iface eth0:10 inet static
-address 10.0.1.20
-netmask 255.255.0.0
-
-# IP used for Apple caching
-auto eth0:11
-iface eth0:11 inet static
-address 10.0.1.21
-netmask 255.255.0.0
-
-# IP used for WarGaming caching
-auto eth0:12
-iface eth0:12 inet static
-address 10.0.1.22
-netmask 255.255.0.0
-
-# IP used for Uplay caching
-auto eth0:13
-iface eth0:13 inet static
-address 10.0.1.23
-netmask 255.255.0.0
-
-# Ip used for Glyph caching
-auto eth0:14
-iface eth0:14 inet static
-address 10.0.1.24
-netmask 255.255.0.0
-
-# IP used for ZeniMax caching
-auto eth0:15
-    iface eth0:15 inet static
-    address 10.0.1.25
-    netmask 255.255.255.0
-    
-# IP used for digitalextremes caching
-auto eth0:16
-    iface eth0:16 inet static
-    address 10.0.1.26
-    netmask 255.255.255.0
-    
-# IP used for pearlabyss caching
-auto eth0:17
-    iface eth0:17 inet static
-    address 10.0.1.27
-    netmask 255.255.255.0
-```
 
 	5) Create the user lancache
 		sudo adduser --system --no-create-home lancache
