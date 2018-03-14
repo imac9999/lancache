@@ -13,7 +13,8 @@ Twitter @ https://twitter.com/search?q=%40LAN_CACHE&src=typd
 OS: Debian 9.4 amd64 (Stretch)
 
 ## Short Changelog
-* 03-14-2018 - Minor changes in Readme.md to provide a more hassle free installation.
+* 03-14-2018 imac
+	* Minor changes in Readme.md to provide a more hassle free installation.
 * 6-30-2017 saambd
     * Added missing } on line 56 of Microsoft conf    
 * 8-03-2017 bn_
