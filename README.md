@@ -49,7 +49,7 @@ If you want to install it manually, please follow the instructions below:
 	   apt-get install curl git unbound build-essential libpcre3 zlib1g-dev libreadline-dev libncurses5-dev libssl-dev httpry libudns0 libudns-dev libev4 libev-dev devscripts automake libtool autoconf autotools-dev cdbs debhelper dh-autoreconf dpkg-dev gettext pkg-config fakeroot libpcre3-dev -y
 
 	2) Clone the git repo
-	   git clone -b master http://github.com/bntjah/lancache
+	   git clone -b master http://github.com/imac9999/lancache
 
 	3) Install nginx
 	   curl http://nginx.org/download/nginx-1.13.4.tar.gz | tar zx
