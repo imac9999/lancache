@@ -90,21 +90,21 @@ If you want to install it manually, please follow the instructions below:
 		mkdir -p /srv/lancache/logs/Access
 
 	6.1) chown the folder:
-		sudo chown -R lancache:lancache /srv/lancache
+		chown -R lancache:lancache /srv/lancache
 
 	7) Copy the conf folder and contents (where you originally git cloned it to in step 4) to /usr/local/nginx/conf/
-		sudo cp -R ~/lancache/conf /usr/local/nginx/
+		cp -R ~/lancache/conf /usr/local/nginx/
     		
 		7.1) Replace the proxy_bind variable with your primary IP address (not one of the virtual ones)
 
 	8) Copy the Lancache file from ~/lancache/init.d/ to /etc/init.d/ by:
-		sudo cp -R ~/lancache/conf/lancache /etc/init.d/
+		cp -R ~/lancache/conf/lancache /etc/init.d/
 
 	9) Make it an executable:
-		sudo chmod +x /etc/init.d/lancache
+		chmod +x /etc/init.d/lancache
 
 	10) Put it in the standard Boot:
-		sudo update-rc.d lancache defaults
+		update-rc.d lancache defaults
 
 	11) Copy ~/lancache/limits.conf to /etc/security/
 
@@ -113,12 +113,12 @@ If you want to install it manually, please follow the instructions below:
 			cp ~/lancache/hosts /etc/
 
 	13) Disable IPv6
-	    sudo echo "net.ipv6.conf.all.disable_ipv6=1" >/etc/sysctl.d/disable-ipv6.conf
-        sudo sysctl -p /etc/sysctl.d/disable-ipv6.conf
+		echo "net.ipv6.conf.all.disable_ipv6=1" >/etc/sysctl.d/disable-ipv6.conf
+        	sysctl -p /etc/sysctl.d/disable-ipv6.conf
 
 	14) Install sniproxy for passing through HTTPS traffic (cannot be cached)
 		14.1) git clone https://github.com/dlundquist/sniproxy
-		14.2) sudo curl https://raw.githubusercontent.com/OpenSourceLAN/origin-docker/master/sniproxy/sniproxy.conf -o /etc/sniproxy.conf
+		14.2) curl https://raw.githubusercontent.com/OpenSourceLAN/origin-docker/master/sniproxy/sniproxy.conf -o /etc/sniproxy.conf
 		19.3) cd sniproxy
 		19.4) ./autogen.sh && ./configure && make check && make install
 			# If there are problems during test procedures, you can try to skip the checks by leaving out "&&make check" 
@@ -131,14 +131,14 @@ If you want to install it manually, please follow the instructions below:
 ## Traffic Monitoring on CLI
 
 	A) Monitor through nload
-	   sudo apt-get install nload -y
-	   sudo nload -U G -u M -i 102400 -o 102400 (shows bandwith in MByte/s)
+	   apt-get install nload -y
+	   nload -U G -u M -i 102400 -o 102400 (shows bandwith in MByte/s)
 	   or
-	   sudo nload -U G -u m -i 1024000 -o 1024000 (shows bandwith in Mbit/s, scales graph to 1 Gbit/s)
+	   nload -U G -u m -i 1024000 -o 1024000 (shows bandwith in Mbit/s, scales graph to 1 Gbit/s)
 	   
 	B) Monitor network usage through iftop
-	   sudo apt-get install iftop -y
-	   sudo iftop -i eth0
+	   apt-get install iftop -y
+	   iftop -i eth0
 	   (Instead of eth0 just use your physical interface)
 
 ## Optionals
