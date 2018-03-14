@@ -68,27 +68,8 @@ If you want to install it manually, please follow the instructions below:
 		usermod -aG lancache lancache
 	
 	6) Just create the folders:
-		mkdir -p /srv/lancache/data/blizzard/
-		mkdir -p /srv/lancache/data/microsoft/
-		mkdir -p /srv/lancache/data/installs/
-		mkdir -p /srv/lancache/data/other/
-		mkdir -p /srv/lancache/data/tmp/
-		mkdir -p /srv/lancache/data/hirez/
-		mkdir -p /srv/lancache/data/origin/
-		mkdir -p /srv/lancache/data/riot/
-		mkdir -p /srv/lancache/data/gog/
-		mkdir -p /srv/lancache/data/sony/
-		mkdir -p /srv/lancache/data/steam/
-		mkdir -p /srv/lancache/data/wargaming
-		mkdir -p /srv/lancache/data/arenanetworks
-		mkdir -p /srv/lancache/data/uplay
-		mkdir -p /srv/lancache/data/glyph
-		mkdir -p /srv/lancache/data/zenimax
-		mkdir -p /srv/lancache/data/digitalextremes
-		mkdir -p /srv/lancache/data/pearlabyss
-		mkdir -p /srv/lancache/logs/Errors
-		mkdir -p /srv/lancache/logs/Keys
-		mkdir -p /srv/lancache/logs/Access
+		mkdir -p /srv/lancache/data/{microsoft,installs,other,tmp,hirez,origin,riot,gog,sony,steam,wargaming,arenanetworks,uplay,glyph,zenimax,digitalextremes,pearlabyss}
+		mkdir -p /srv/lancache/logs/{Errors,Keys,Access}
 
 	6.1) chown the folder:
 		chown -R lancache:lancache /srv/lancache
