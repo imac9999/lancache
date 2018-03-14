@@ -69,42 +69,43 @@ If you want to install it manually, please follow the instructions below:
 
 
 	5) Create the user lancache
-		sudo adduser --system --no-create-home lancache
-		sudo addgroup --system lancache
-		sudo usermod -aG lancache lancache
+		adduser --system --no-create-home lancache
+		addgroup --system lancache
+		usermod -aG lancache lancache
 	
 	6) Just create the folders:
-		sudo mkdir -p /srv/lancache/data/blizzard/
-		sudo mkdir -p /srv/lancache/data/microsoft/
-		sudo mkdir -p /srv/lancache/data/installs/
-		sudo mkdir -p /srv/lancache/data/other/
-		sudo mkdir -p /srv/lancache/data/tmp/
-		sudo mkdir -p /srv/lancache/data/hirez/
-		sudo mkdir -p /srv/lancache/data/origin/
-		sudo mkdir -p /srv/lancache/data/riot/
-		sudo mkdir -p /srv/lancache/data/gog/
-		sudo mkdir -p /srv/lancache/data/sony/
-		sudo mkdir -p /srv/lancache/data/steam/
-		sudo mkdir -p /srv/lancache/data/wargaming
-		sudo mkdir -p /srv/lancache/data/arenanetworks
-		sudo mkdir -p /srv/lancache/data/uplay
-		sudo mkdir -p /srv/lancache/data/glyph
-		sudo mkdir -p /srv/lancache/data/zenimax
-		sudo mkdir -p /srv/lancache/data/digitalextremes
-		sudo mkdir -p /srv/lancache/data/pearlabyss
-		sudo mkdir -p /srv/lancache/logs/Errors
-		sudo mkdir -p /srv/lancache/logs/Keys
-		sudo mkdir -p /srv/lancache/logs/Access
+		mkdir -p /srv/lancache/data/blizzard/
+		mkdir -p /srv/lancache/data/microsoft/
+		mkdir -p /srv/lancache/data/installs/
+		mkdir -p /srv/lancache/data/other/
+		mkdir -p /srv/lancache/data/tmp/
+		mkdir -p /srv/lancache/data/hirez/
+		mkdir -p /srv/lancache/data/origin/
+		mkdir -p /srv/lancache/data/riot/
+		mkdir -p /srv/lancache/data/gog/
+		mkdir -p /srv/lancache/data/sony/
+		mkdir -p /srv/lancache/data/steam/
+		mkdir -p /srv/lancache/data/wargaming
+		mkdir -p /srv/lancache/data/arenanetworks
+		mkdir -p /srv/lancache/data/uplay
+		mkdir -p /srv/lancache/data/glyph
+		mkdir -p /srv/lancache/data/zenimax
+		mkdir -p /srv/lancache/data/digitalextremes
+		mkdir -p /srv/lancache/data/pearlabyss
+		mkdir -p /srv/lancache/logs/Errors
+		mkdir -p /srv/lancache/logs/Keys
+		mkdir -p /srv/lancache/logs/Access
 
 	6.1) chown the folder:
 		sudo chown -R lancache:lancache /srv/lancache
 
 	7) Copy the conf folder and contents (where you originally git cloned it to in step 4) to /usr/local/nginx/conf/
 		sudo cp -R ~/lancache/conf /usr/local/nginx/
-    7.1) Replace the proxy_bind variable with your primary IP address (not one of the virtual ones)
+    		
+		7.1) Replace the proxy_bind variable with your primary IP address (not one of the virtual ones)
 
-	8) Copy the Lancache file from init.d/ to /etc/init.d/ by:
-		sudo cp -R lancache /etc/init.d/lancache
+	8) Copy the Lancache file from ~/lancache/init.d/ to /etc/init.d/ by:
+		sudo cp -R ~/lancache/conf/lancache /etc/init.d/
 
 	9) Make it an executable:
 		sudo chmod +x /etc/init.d/lancache
@@ -112,10 +113,11 @@ If you want to install it manually, please follow the instructions below:
 	10) Put it in the standard Boot:
 		sudo update-rc.d lancache defaults
 
-	11) Copy limits.conf to /etc/security/limits.conf
+	11) Copy ~/lancache/limits.conf to /etc/security/
 
-    12) Copy hosts to /etc/hosts
-	12.1) Replace the hostnames with the virtual IPs
+   	12) Edit ~/lancache/hosts to your needs, placing all your virtual IP's next to the appropriate caching service
+		12.1) copy ~/lancache/hosts into your /etc dir
+			cp ~/lancache/hosts /etc/
 
 	13) Disable IPv6
 	    sudo echo "net.ipv6.conf.all.disable_ipv6=1" >/etc/sysctl.d/disable-ipv6.conf
@@ -125,12 +127,13 @@ If you want to install it manually, please follow the instructions below:
 		14.1) git clone https://github.com/dlundquist/sniproxy
 		14.2) sudo curl https://raw.githubusercontent.com/OpenSourceLAN/origin-docker/master/sniproxy/sniproxy.conf -o /etc/sniproxy.conf
 		19.3) cd sniproxy
-		19.4) ./autogen.sh && ./configure && make check && sudo make install
-		19.5) Start sniproxy with ./sniproxy -c /etc/sniproxy.conf
+		19.4) ./autogen.sh && ./configure && make check && make install
+			# If there are problems during test procedures, you can try to skip the checks by leaving out "&&make check" 
+		19.5) Start sniproxy with /usr/local/sbin/sniproxy -c /etc/sniproxy.conf
 
-	15) Copy the unbound configuration from unbound/unbound.conf to /etc/unbound/unbound.conf
+	15) Copy the unbound configuration from ~/lancache/unbound/unbound.conf to /etc/unbound/unbound.conf
 	15.1) Replace the interfaces: section with the normal ip (not the virtual ones)
-    15.2) Replace all A records with the appropriate IPs (the virtual IPs for the appropriate caching service)
+    	15.2) Replace all "A records" with the appropriate IPs (the virtual IPs for the appropriate caching service)
 
 ## Traffic Monitoring on CLI
 
