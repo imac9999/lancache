@@ -10,9 +10,10 @@ Facebook @ https://www.facebook.com/groups/434599530274923/?notif_id=15090196975
 
 Twitter @ https://twitter.com/search?q=%40LAN_CACHE&src=typd
 
-OS: Debian 8.6 amd64 (Jessie)
+OS: Debian 9.4 amd64 (Stretch)
 
 ## Short Changelog
+* 03-14-2018 - Minor changes in Readme.md to provide a more hassle free installation.
 * 6-30-2017 saambd
     * Added missing } on line 56 of Microsoft conf    
 * 8-03-2017 bn_
@@ -38,21 +39,13 @@ apt-get autoremove
 Otherwise nginx may not start with lancache start script, instead run as wrong user and load /etc/nginx/nginx.conf.
 It results in not proxying and leaving entries in /var/log/nginx/...
 
-## Installation
-
-### Quick Installation on a clean Debian
-This repository contains instructions and configuration details for the a service, which is used for caching binary Gaming content for lan parties.
-It is part of the repository https://github.com/bntjah/lc-installer and is used as submodule of it. Of course it can be used standalone as well,
-although please be aware that the configuration files are mostly templated and therefore have to be changed manually for the use in different environments.
-
-The quickest and easiest way ot get lancache up and running is the use of:
-https://github.com/bntjah/lc-installer (warning might contain bugs! So proceed on your own accord!)
-
 ### Manual installation
 
 If you want to install it manually, please follow the instructions below:
 
-    1) Install the required utilities
+	0) Configure proper network interface in your /etc/network/interfaces file, go for static IP address, take notes about all IPs you'll assign, as you need to refer to them during this installation by A LOT!
+
+    	1) Install the required utilities
 	   apt-get install curl git unbound build-essential libpcre3 zlib1g-dev libreadline-dev libncurses5-dev libssl-dev httpry libudns0 libudns-dev libev4 libev-dev devscripts automake libtool autoconf autotools-dev cdbs debhelper dh-autoreconf dpkg-dev gettext pkg-config fakeroot libpcre3-dev -y
 
 	2) Clone the git repo
